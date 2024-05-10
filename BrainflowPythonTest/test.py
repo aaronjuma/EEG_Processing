@@ -3,8 +3,6 @@ import time
 import matplotlib
 import numpy as np
 import pandas as pd
-
-matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
 from brainflow.board_shim import BoardShim, BrainFlowInputParams, LogLevels, BoardIds
@@ -12,52 +10,39 @@ from brainflow.data_filter import DataFilter, FilterTypes, AggOperations, NoiseT
 
 
 def main():
-    BoardShim.enable_dev_board_logger()
 
-    # use synthetic board for demo
+    # Setup
+    BoardShim.enable_dev_board_logger()
     params = BrainFlowInputParams()
     board_id = BoardIds.UNICORN_BOARD
     board = BoardShim(board_id, params)
     board.prepare_session()
     board.start_stream()
-    BoardShim.log_message(LogLevels.LEVEL_INFO.value, 'start sleeping in the main thread')
+
+    # Basic Calculations
+    sampling_rate = BoardShim.get_sampling_rate(board_id)
+    time_to_record = sampling_rate*5 # 5 seconds
+
+    # Wait to populate data
     time.sleep(10)
-    data = board.get_board_data()
+    data = board.get_current_board_data(time_to_record)
     board.stop_stream()
     board.release_session()
 
     # demo how to convert it to pandas DF and plot data
     eeg_channels = BoardShim.get_eeg_channels(board_id)
-    df = pd.DataFrame(np.transpose(data))
-    plt.figure()
-    df[eeg_channels].plot(subplots=True)
-    plt.savefig('before_processing.png')
 
     # for demo apply different filters to different channels, in production choose one
-    for count, channel in enumerate(eeg_channels):
-        # filters work in-place
-        if count == 0:
-            DataFilter.perform_bandpass(data[channel], BoardShim.get_sampling_rate(board_id), 2.0, 50.0, 4,
-                                        FilterTypes.BESSEL_ZERO_PHASE, 0)
-        elif count == 1:
-            DataFilter.perform_bandstop(data[channel], BoardShim.get_sampling_rate(board_id), 48.0, 52.0, 3,
-                                        FilterTypes.BUTTERWORTH_ZERO_PHASE, 0)
-        elif count == 2:
-            DataFilter.perform_lowpass(data[channel], BoardShim.get_sampling_rate(board_id), 50.0, 5,
-                                       FilterTypes.CHEBYSHEV_TYPE_1_ZERO_PHASE, 1)
-        elif count == 3:
-            DataFilter.perform_highpass(data[channel], BoardShim.get_sampling_rate(board_id), 2.0, 4,
-                                        FilterTypes.BUTTERWORTH, 0)
-        elif count == 4:
-            DataFilter.perform_rolling_filter(data[channel], 3, AggOperations.MEAN.value)
-        else:
-            DataFilter.remove_environmental_noise(data[channel], BoardShim.get_sampling_rate(board_id),
-                                                  NoiseTypes.FIFTY.value)
+    for channel in eeg_channels:
+        DataFilter.perform_bandpass(data[channel], BoardShim.get_sampling_rate(board_id), 2.0, 60.0, 1, FilterTypes.BUTTERWORTH, 0)
+        DataFilter.perform_lowpass(data[channel], BoardShim.get_sampling_rate(board_id), 60.0, 1, FilterTypes.BUTTERWORTH, 1)
+        DataFilter.perform_highpass(data[channel], BoardShim.get_sampling_rate(board_id), 2.0, 1, FilterTypes.BUTTERWORTH, 0)
+        # DataFilter.perform_rolling_filter(data[channel], 3, AggOperations.MEAN.value)
+        DataFilter.remove_environmental_noise(data[channel], BoardShim.get_sampling_rate(board_id), NoiseTypes.SIXTY.value)
 
-    df = pd.DataFrame(np.transpose(data))
-    plt.figure()
-    df[eeg_channels].plot(subplots=True)
-    plt.savefig('after_processing.png')
+    fig, ax = plt.subplots()
+    ax.plot(data[0])
+    plt.show()
 
 
 if __name__ == "__main__":
