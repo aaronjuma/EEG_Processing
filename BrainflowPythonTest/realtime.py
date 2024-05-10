@@ -5,6 +5,7 @@ import pyqtgraph as pg
 from brainflow.board_shim import BoardShim, BrainFlowInputParams, BoardIds
 from brainflow.data_filter import DataFilter, FilterTypes, DetrendOperations
 from pyqtgraph.Qt import QtGui, QtCore, QtWidgets
+from brainflow.data_filter import DataFilter, AggOperations, WaveletTypes, NoiseEstimationLevelTypes, WaveletExtensionTypes, ThresholdTypes, WaveletDenoisingTypes
 
 
 class Graph:
@@ -36,8 +37,7 @@ class Graph:
             p.setMenuEnabled('left', False)
             p.showAxis('bottom', False)
             p.setMenuEnabled('bottom', False)
-            if i == 0:
-                p.setTitle('TimeSeries Plot')
+            p.setTitle(f'TimeSeries {i+1}')
             self.plots.append(p)
             curve = p.plot()
             self.curves.append(curve)
@@ -53,6 +53,11 @@ class Graph:
             #                             FilterTypes.BUTTERWORTH_ZERO_PHASE, 0)
             DataFilter.perform_bandstop(data[channel], self.sampling_rate, 58.0, 62.0, 2,
                                         FilterTypes.BUTTERWORTH_ZERO_PHASE, 0)
+            DataFilter.perform_rolling_filter(data[channel], 3, AggOperations.MEAN.value)
+            DataFilter.perform_rolling_filter(data[channel], 3, AggOperations.MEDIAN.value)
+            DataFilter.perform_wavelet_denoising(data[channel], WaveletTypes.BIOR3_9, 3,
+                                        WaveletDenoisingTypes.SURESHRINK, ThresholdTypes.HARD,
+                                        WaveletExtensionTypes.SYMMETRIC, NoiseEstimationLevelTypes.FIRST_LEVEL)
             self.curves[count].setData(data[channel].tolist())
 
         self.app.processEvents()
