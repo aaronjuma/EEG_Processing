@@ -83,10 +83,8 @@ class Graph:
         x = data[30] - self.initial_time
         new_data = np.array(x)
         y = data[self.channels[0] : self.channels[-1] + 1]
-        for i in self.channels:
-            new_data = np.vstack((new_data, y[i-1]))
-        # new_data = np.vstack((x, y))
-        print(new_data)
+        new_data = np.vstack((x, y))
+        # print(new_data)
 
         np.savetxt("test.csv", np.transpose(new_data), delimiter=",")
 
