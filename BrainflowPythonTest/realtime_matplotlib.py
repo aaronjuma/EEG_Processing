@@ -52,9 +52,8 @@ class Graph:
         y = data[self.channels[0] : self.channels[-1] + 1]
 
         # Updates plot
-        self.fig.clear()
-
         for i in self.channels:
+            self.ax[i-1].clear()
             self.ax[i-1].set_ylabel(f"Channel {i}")
             self.ax[i-1].plot(x, y[i-1], color = 'tab:red')
 
