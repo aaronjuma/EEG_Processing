@@ -78,7 +78,6 @@ class Graph:
     def close(self, event):
         # Get EEG data from board
         data = self.board.get_board_data()
-        print(type(data))
 
         # Get x and y data
         x = data[30] - self.initial_time
