@@ -8,11 +8,7 @@ from brainflow.data_filter import DataFilter, FilterTypes, DetrendOperations, Ag
 
 class Graph:
 
-    """
-    Initializer for the Grapher Class
-    Input: config
-    Output: None
-    """
+    # Initializer
     def __init__(self):
 
         # Setting up the board
@@ -40,24 +36,22 @@ class Graph:
         self.initial_time = start[30,0] #Get the initial timestamp data
 
 
-    """
-    Animate function that will update the graph with new values
-    Input: None
-    Output: None
-    """
+    # Update function
     def animate(self, i):
 
+        # Get EEG data from board
         data = self.board.get_current_board_data(self.bin_size)
 
+        # Get x and y data
         x = data[30] - self.initial_time
         y = data[self.channels[0] : self.channels[-1] + 1]
-
-        #Add Processing Code Here:
 
         # Updates plot
         for i in self.channels:
             self.ax[i-1].clear()
-            self.ax[i-1].set_ylabel(f"Channel {i}")
+            self.ax[i-1].title.set_text(f"Channel {i}")
+
+            #Add Processing Code Here:
             DataFilter.detrend(y[i-1], DetrendOperations.CONSTANT.value)
             DataFilter.perform_bandpass(y[i-1], self.sampling_rate, 2.0, 60.0, 2,
                                         FilterTypes.BUTTERWORTH_ZERO_PHASE, 0)
@@ -70,28 +64,27 @@ class Graph:
             DataFilter.perform_wavelet_denoising(y[i-1], WaveletTypes.BIOR3_9, 3,
                                         WaveletDenoisingTypes.SURESHRINK, ThresholdTypes.HARD,
                                         WaveletExtensionTypes.SYMMETRIC, NoiseEstimationLevelTypes.FIRST_LEVEL)
+            
+            # Plot the graph
             self.ax[i-1].plot(x, y[i-1], color = 'tab:red')
 
+        # Add at the bottom
         self.ax[self.channels[-1]-1].set_xlabel('Time (s)')
         
         # Finishing touch ups on the graph
         plt.xticks(rotation=45, ha='right')
-        plt.subplots_adjust(bottom=0.30)
-        plt.title('EEG Real-Time Data')
-        plt.tight_layout()
+        # plt.title('EEG Real-Time Data')
 
 
-    """
-    Multiprocessing Function to Plot the graph in real time
-    Input: Multiprocessing Value variables of diameter, speed, and threshold
-    Output: None
-    """
+    # Plot it in real time
     def plot(self):
 
         # Plots the graph in real time
         ani = animation.FuncAnimation(self.fig, self.animate, interval=50, cache_frame_data=False)
         plt.show()
 
+
+# Running the program
 if __name__ == '__main__':
     graph = Graph()
     graph.plot()
