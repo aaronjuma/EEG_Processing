@@ -47,9 +47,9 @@ class Graph:
         y = data[self.channels[0] : self.channels[-1] + 1]
 
         # Updates plot
+        plt.cla()
         for i in self.channels:
             self.ax[i-1].clear()
-            self.ax[i-1].title.set_text(f"Channel {i}")
 
             #Add Processing Code Here:
             DataFilter.detrend(y[i-1], DetrendOperations.CONSTANT.value)
@@ -75,11 +75,26 @@ class Graph:
         plt.xticks(rotation=45, ha='right')
         # plt.title('EEG Real-Time Data')
 
+    def close(self, event):
+        # Get EEG data from board
+        data = self.board.get_board_data()
+        print(type(data))
+
+        # Get x and y data
+        x = data[30] - self.initial_time
+        y = data[self.channels[0] : self.channels[-1] + 1]
+
+        new_data = np.vstack((x, y))
+        print(new_data)
+
+        DataFilter.write_file(new_data, 'test.csv', 'w')
+
 
     # Plot it in real time
     def plot(self):
 
         # Plots the graph in real time
+        self.fig.canvas.mpl_connect('close_event', self.close)
         ani = animation.FuncAnimation(self.fig, self.animate, interval=50, cache_frame_data=False)
         plt.show()
 
