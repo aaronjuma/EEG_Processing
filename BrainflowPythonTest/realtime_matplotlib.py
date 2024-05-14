@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import matplotlib.animation as animation
 
 from brainflow.board_shim import BoardShim, BrainFlowInputParams, BoardIds, BrainFlowPresets
+from brainflow.data_filter import DataFilter, FilterTypes, DetrendOperations, AggOperations, WaveletTypes, NoiseEstimationLevelTypes, WaveletExtensionTypes, ThresholdTypes, WaveletDenoisingTypes
 
 class Graph:
 
@@ -51,10 +52,24 @@ class Graph:
         x = data[30] - self.initial_time
         y = data[self.channels[0] : self.channels[-1] + 1]
 
+        #Add Processing Code Here:
+
         # Updates plot
         for i in self.channels:
             self.ax[i-1].clear()
             self.ax[i-1].set_ylabel(f"Channel {i}")
+            DataFilter.detrend(y[i-1], DetrendOperations.CONSTANT.value)
+            DataFilter.perform_bandpass(y[i-1], self.sampling_rate, 2.0, 60.0, 2,
+                                        FilterTypes.BUTTERWORTH_ZERO_PHASE, 0)
+            # DataFilter.perform_bandstop(data[channel], self.sampling_rate, 48.0, 52.0, 2,
+            #                             FilterTypes.BUTTERWORTH_ZERO_PHASE, 0)
+            DataFilter.perform_bandstop(y[i-1], self.sampling_rate, 58.0, 62.0, 2,
+                                        FilterTypes.BUTTERWORTH_ZERO_PHASE, 0)
+            DataFilter.perform_rolling_filter(y[i-1], 3, AggOperations.MEAN.value)
+            DataFilter.perform_rolling_filter(y[i-1], 3, AggOperations.MEDIAN.value)
+            DataFilter.perform_wavelet_denoising(y[i-1], WaveletTypes.BIOR3_9, 3,
+                                        WaveletDenoisingTypes.SURESHRINK, ThresholdTypes.HARD,
+                                        WaveletExtensionTypes.SYMMETRIC, NoiseEstimationLevelTypes.FIRST_LEVEL)
             self.ax[i-1].plot(x, y[i-1], color = 'tab:red')
 
         self.ax[self.channels[-1]-1].set_xlabel('Time (s)')
