@@ -59,7 +59,7 @@ class Graph:
             # DataFilter.perform_wavelet_denoising(data[channel], WaveletTypes.BIOR3_9, 3,
             #                             WaveletDenoisingTypes.SURESHRINK, ThresholdTypes.HARD,
             #                             WaveletExtensionTypes.SYMMETRIC, NoiseEstimationLevelTypes.FIRST_LEVEL)
-            self.curves[count].setData(data[channel][250:2250].tolist())
+            self.curves[count].setData(data[channel].tolist())
 
         self.app.processEvents()
 
