@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2024.1.5),
-    on July 01, 2024, at 19:51
+    on July 02, 2024, at 01:09
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -779,8 +779,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
     thisExp.addData('trial_18.stopped', globalClock.getTime(format='float'))
-    # Run 'End Routine' code from code_2
-    thisExp.addData('eegtime', eeg.setMarker())
     # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
     if routineForceEnded:
         routineTimer.reset()
@@ -973,8 +971,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
     thisExp.addData('trial_16.stopped', globalClock.getTime(format='float'))
-    # Run 'End Routine' code from code_3
-    thisExp.addData('eegtime', eeg.setMarker())
     # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
     if routineForceEnded:
         routineTimer.reset()
@@ -1167,8 +1163,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
     thisExp.addData('trial_9.stopped', globalClock.getTime(format='float'))
-    # Run 'End Routine' code from code_4
-    thisExp.addData('eegtime', eeg.setMarker())
     # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
     if routineForceEnded:
         routineTimer.reset()
@@ -1361,8 +1355,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
     thisExp.addData('trial_24.stopped', globalClock.getTime(format='float'))
-    # Run 'End Routine' code from code_5
-    thisExp.addData('eegtime', eeg.setMarker())
     # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
     if routineForceEnded:
         routineTimer.reset()
@@ -1578,8 +1570,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     if key_resp.keys != None:  # we had a response
         thisExp.addData('key_resp.rt', key_resp.rt)
         thisExp.addData('key_resp.duration', key_resp.duration)
-    # Run 'End Routine' code from code_6
-    eeg.close()
     thisExp.nextEntry()
     # the Routine "Adios" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset()

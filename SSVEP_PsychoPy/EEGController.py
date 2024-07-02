@@ -14,7 +14,7 @@ class EEGController:
 
         # Setting up the board
         params = BrainFlowInputParams()
-        params.serial_number = 'UN-2022.04.20' #TODO: Change to current serial number
+        params.serial_number = 'UN-2023.02.30'
         self.board_id = BoardIds.UNICORN_BOARD
         self.board = BoardShim(self.board_id, params)
 
