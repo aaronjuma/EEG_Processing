@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2024.1.5),
-    on July 01, 2024, at 19:33
+    on July 01, 2024, at 19:51
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -131,7 +131,7 @@ def setupData(expInfo, dataDir=None):
     thisExp = data.ExperimentHandler(
         name=expName, version='',
         extraInfo=expInfo, runtimeInfo=None,
-        originPath='C:\\Users\\kapj_\\Documents\\University of Waterloo\\Neuro\\untitled_lastrun.py',
+        originPath='C:\\Users\\kapj_\\Documents\\GitHub\\EEG_Processing\\SSVEP_PsychoPy\\untitled.py',
         savePickle=True, saveWideText=True,
         dataFileName=dataDir + os.sep + filename, sortColumns='time'
     )
@@ -370,15 +370,17 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         languageStyle='LTR',
         depth=0.0);
     keyWelcome = keyboard.Keyboard(deviceName='keyWelcome')
+    # Run 'Begin Experiment' code from code
+    import EEGController
+    eeg = EEGController.EEGController()
     
     # --- Initialize components for Routine "break_1" ---
-    text = visual.TextStim(win=win, name='text',
-        text=None,
-        font='Arial',
-        pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
-        color='white', colorSpace='rgb', opacity=None, 
-        languageStyle='LTR',
-        depth=0.0);
+    polygon = visual.ShapeStim(
+        win=win, name='polygon', vertices='cross',
+        size=(0.5, 0.5),
+        ori=0.0, pos=(0, 0), anchor='center',
+        lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
+        opacity=None, depth=0.0, interpolate=True)
     
     # --- Initialize components for Routine "trial_18" ---
     hz18 = visual.ShapeStim(
@@ -389,13 +391,12 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         opacity=1.0, depth=0.0, interpolate=True)
     
     # --- Initialize components for Routine "break_2" ---
-    text_2 = visual.TextStim(win=win, name='text_2',
-        text=None,
-        font='Arial',
-        pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
-        color='white', colorSpace='rgb', opacity=None, 
-        languageStyle='LTR',
-        depth=0.0);
+    polygon_2 = visual.ShapeStim(
+        win=win, name='polygon_2', vertices='cross',
+        size=(0.5, 0.5),
+        ori=0.0, pos=(0, 0), anchor='center',
+        lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
+        opacity=None, depth=0.0, interpolate=True)
     
     # --- Initialize components for Routine "trial_16" ---
     hz16 = visual.ShapeStim(
@@ -406,13 +407,12 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         opacity=1.0, depth=0.0, interpolate=True)
     
     # --- Initialize components for Routine "break_2" ---
-    text_2 = visual.TextStim(win=win, name='text_2',
-        text=None,
-        font='Arial',
-        pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
-        color='white', colorSpace='rgb', opacity=None, 
-        languageStyle='LTR',
-        depth=0.0);
+    polygon_2 = visual.ShapeStim(
+        win=win, name='polygon_2', vertices='cross',
+        size=(0.5, 0.5),
+        ori=0.0, pos=(0, 0), anchor='center',
+        lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
+        opacity=None, depth=0.0, interpolate=True)
     
     # --- Initialize components for Routine "trial_9" ---
     hz9 = visual.ShapeStim(
@@ -423,13 +423,12 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         opacity=1.0, depth=0.0, interpolate=True)
     
     # --- Initialize components for Routine "break_2" ---
-    text_2 = visual.TextStim(win=win, name='text_2',
-        text=None,
-        font='Arial',
-        pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
-        color='white', colorSpace='rgb', opacity=None, 
-        languageStyle='LTR',
-        depth=0.0);
+    polygon_2 = visual.ShapeStim(
+        win=win, name='polygon_2', vertices='cross',
+        size=(0.5, 0.5),
+        ori=0.0, pos=(0, 0), anchor='center',
+        lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
+        opacity=None, depth=0.0, interpolate=True)
     
     # --- Initialize components for Routine "trial_24" ---
     hz24 = visual.ShapeStim(
@@ -440,13 +439,12 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         opacity=1.0, depth=0.0, interpolate=True)
     
     # --- Initialize components for Routine "break_1" ---
-    text = visual.TextStim(win=win, name='text',
-        text=None,
-        font='Arial',
-        pos=(0, 0), height=0.05, wrapWidth=None, ori=0.0, 
-        color='white', colorSpace='rgb', opacity=None, 
-        languageStyle='LTR',
-        depth=0.0);
+    polygon = visual.ShapeStim(
+        win=win, name='polygon', vertices='cross',
+        size=(0.5, 0.5),
+        ori=0.0, pos=(0, 0), anchor='center',
+        lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
+        opacity=None, depth=0.0, interpolate=True)
     
     # --- Initialize components for Routine "Adios" ---
     text_3 = visual.TextStim(win=win, name='text_3',
@@ -601,7 +599,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     # update component parameters for each repeat
     thisExp.addData('break_1.started', globalClock.getTime(format='float'))
     # keep track of which components have finished
-    break_1Components = [text]
+    break_1Components = [polygon]
     for thisComponent in break_1Components:
         thisComponent.tStart = None
         thisComponent.tStop = None
@@ -624,39 +622,39 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
         # update/draw components on each frame
         
-        # *text* updates
+        # *polygon* updates
         
-        # if text is starting this frame...
-        if text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # if polygon is starting this frame...
+        if polygon.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
             # keep track of start time/frame for later
-            text.frameNStart = frameN  # exact frame index
-            text.tStart = t  # local t and not account for scr refresh
-            text.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(text, 'tStartRefresh')  # time at next scr refresh
+            polygon.frameNStart = frameN  # exact frame index
+            polygon.tStart = t  # local t and not account for scr refresh
+            polygon.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(polygon, 'tStartRefresh')  # time at next scr refresh
             # add timestamp to datafile
-            thisExp.timestampOnFlip(win, 'text.started')
+            thisExp.timestampOnFlip(win, 'polygon.started')
             # update status
-            text.status = STARTED
-            text.setAutoDraw(True)
+            polygon.status = STARTED
+            polygon.setAutoDraw(True)
         
-        # if text is active this frame...
-        if text.status == STARTED:
+        # if polygon is active this frame...
+        if polygon.status == STARTED:
             # update params
             pass
         
-        # if text is stopping this frame...
-        if text.status == STARTED:
+        # if polygon is stopping this frame...
+        if polygon.status == STARTED:
             # is it time to stop? (based on global clock, using actual start)
-            if tThisFlipGlobal > text.tStartRefresh + 2.5-frameTolerance:
+            if tThisFlipGlobal > polygon.tStartRefresh + 2.5-frameTolerance:
                 # keep track of stop time/frame for later
-                text.tStop = t  # not accounting for scr refresh
-                text.tStopRefresh = tThisFlipGlobal  # on global time
-                text.frameNStop = frameN  # exact frame index
+                polygon.tStop = t  # not accounting for scr refresh
+                polygon.tStopRefresh = tThisFlipGlobal  # on global time
+                polygon.frameNStop = frameN  # exact frame index
                 # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'text.stopped')
+                thisExp.timestampOnFlip(win, 'polygon.stopped')
                 # update status
-                text.status = FINISHED
-                text.setAutoDraw(False)
+                polygon.status = FINISHED
+                polygon.setAutoDraw(False)
         
         # check for quit (typically the Esc key)
         if defaultKeyboard.getKeys(keyList=["escape"]):
@@ -695,6 +693,8 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     continueRoutine = True
     # update component parameters for each repeat
     thisExp.addData('trial_18.started', globalClock.getTime(format='float'))
+    # Run 'Begin Routine' code from code_2
+    thisExp.addData('eegtime', eeg.setMarker())
     # keep track of which components have finished
     trial_18Components = [hz18]
     for thisComponent in trial_18Components:
@@ -779,6 +779,8 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
     thisExp.addData('trial_18.stopped', globalClock.getTime(format='float'))
+    # Run 'End Routine' code from code_2
+    thisExp.addData('eegtime', eeg.setMarker())
     # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
     if routineForceEnded:
         routineTimer.reset()
@@ -791,7 +793,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     # update component parameters for each repeat
     thisExp.addData('break_2.started', globalClock.getTime(format='float'))
     # keep track of which components have finished
-    break_2Components = [text_2]
+    break_2Components = [polygon_2]
     for thisComponent in break_2Components:
         thisComponent.tStart = None
         thisComponent.tStop = None
@@ -814,39 +816,39 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
         # update/draw components on each frame
         
-        # *text_2* updates
+        # *polygon_2* updates
         
-        # if text_2 is starting this frame...
-        if text_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # if polygon_2 is starting this frame...
+        if polygon_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
             # keep track of start time/frame for later
-            text_2.frameNStart = frameN  # exact frame index
-            text_2.tStart = t  # local t and not account for scr refresh
-            text_2.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(text_2, 'tStartRefresh')  # time at next scr refresh
+            polygon_2.frameNStart = frameN  # exact frame index
+            polygon_2.tStart = t  # local t and not account for scr refresh
+            polygon_2.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(polygon_2, 'tStartRefresh')  # time at next scr refresh
             # add timestamp to datafile
-            thisExp.timestampOnFlip(win, 'text_2.started')
+            thisExp.timestampOnFlip(win, 'polygon_2.started')
             # update status
-            text_2.status = STARTED
-            text_2.setAutoDraw(True)
+            polygon_2.status = STARTED
+            polygon_2.setAutoDraw(True)
         
-        # if text_2 is active this frame...
-        if text_2.status == STARTED:
+        # if polygon_2 is active this frame...
+        if polygon_2.status == STARTED:
             # update params
             pass
         
-        # if text_2 is stopping this frame...
-        if text_2.status == STARTED:
+        # if polygon_2 is stopping this frame...
+        if polygon_2.status == STARTED:
             # is it time to stop? (based on global clock, using actual start)
-            if tThisFlipGlobal > text_2.tStartRefresh + 10-frameTolerance:
+            if tThisFlipGlobal > polygon_2.tStartRefresh + 10-frameTolerance:
                 # keep track of stop time/frame for later
-                text_2.tStop = t  # not accounting for scr refresh
-                text_2.tStopRefresh = tThisFlipGlobal  # on global time
-                text_2.frameNStop = frameN  # exact frame index
+                polygon_2.tStop = t  # not accounting for scr refresh
+                polygon_2.tStopRefresh = tThisFlipGlobal  # on global time
+                polygon_2.frameNStop = frameN  # exact frame index
                 # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'text_2.stopped')
+                thisExp.timestampOnFlip(win, 'polygon_2.stopped')
                 # update status
-                text_2.status = FINISHED
-                text_2.setAutoDraw(False)
+                polygon_2.status = FINISHED
+                polygon_2.setAutoDraw(False)
         
         # check for quit (typically the Esc key)
         if defaultKeyboard.getKeys(keyList=["escape"]):
@@ -885,6 +887,8 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     continueRoutine = True
     # update component parameters for each repeat
     thisExp.addData('trial_16.started', globalClock.getTime(format='float'))
+    # Run 'Begin Routine' code from code_3
+    thisExp.addData('eegtime', eeg.setMarker())
     # keep track of which components have finished
     trial_16Components = [hz16]
     for thisComponent in trial_16Components:
@@ -969,6 +973,8 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
     thisExp.addData('trial_16.stopped', globalClock.getTime(format='float'))
+    # Run 'End Routine' code from code_3
+    thisExp.addData('eegtime', eeg.setMarker())
     # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
     if routineForceEnded:
         routineTimer.reset()
@@ -981,7 +987,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     # update component parameters for each repeat
     thisExp.addData('break_2.started', globalClock.getTime(format='float'))
     # keep track of which components have finished
-    break_2Components = [text_2]
+    break_2Components = [polygon_2]
     for thisComponent in break_2Components:
         thisComponent.tStart = None
         thisComponent.tStop = None
@@ -1004,39 +1010,39 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
         # update/draw components on each frame
         
-        # *text_2* updates
+        # *polygon_2* updates
         
-        # if text_2 is starting this frame...
-        if text_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # if polygon_2 is starting this frame...
+        if polygon_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
             # keep track of start time/frame for later
-            text_2.frameNStart = frameN  # exact frame index
-            text_2.tStart = t  # local t and not account for scr refresh
-            text_2.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(text_2, 'tStartRefresh')  # time at next scr refresh
+            polygon_2.frameNStart = frameN  # exact frame index
+            polygon_2.tStart = t  # local t and not account for scr refresh
+            polygon_2.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(polygon_2, 'tStartRefresh')  # time at next scr refresh
             # add timestamp to datafile
-            thisExp.timestampOnFlip(win, 'text_2.started')
+            thisExp.timestampOnFlip(win, 'polygon_2.started')
             # update status
-            text_2.status = STARTED
-            text_2.setAutoDraw(True)
+            polygon_2.status = STARTED
+            polygon_2.setAutoDraw(True)
         
-        # if text_2 is active this frame...
-        if text_2.status == STARTED:
+        # if polygon_2 is active this frame...
+        if polygon_2.status == STARTED:
             # update params
             pass
         
-        # if text_2 is stopping this frame...
-        if text_2.status == STARTED:
+        # if polygon_2 is stopping this frame...
+        if polygon_2.status == STARTED:
             # is it time to stop? (based on global clock, using actual start)
-            if tThisFlipGlobal > text_2.tStartRefresh + 10-frameTolerance:
+            if tThisFlipGlobal > polygon_2.tStartRefresh + 10-frameTolerance:
                 # keep track of stop time/frame for later
-                text_2.tStop = t  # not accounting for scr refresh
-                text_2.tStopRefresh = tThisFlipGlobal  # on global time
-                text_2.frameNStop = frameN  # exact frame index
+                polygon_2.tStop = t  # not accounting for scr refresh
+                polygon_2.tStopRefresh = tThisFlipGlobal  # on global time
+                polygon_2.frameNStop = frameN  # exact frame index
                 # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'text_2.stopped')
+                thisExp.timestampOnFlip(win, 'polygon_2.stopped')
                 # update status
-                text_2.status = FINISHED
-                text_2.setAutoDraw(False)
+                polygon_2.status = FINISHED
+                polygon_2.setAutoDraw(False)
         
         # check for quit (typically the Esc key)
         if defaultKeyboard.getKeys(keyList=["escape"]):
@@ -1075,6 +1081,8 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     continueRoutine = True
     # update component parameters for each repeat
     thisExp.addData('trial_9.started', globalClock.getTime(format='float'))
+    # Run 'Begin Routine' code from code_4
+    thisExp.addData('eegtime', eeg.setMarker())
     # keep track of which components have finished
     trial_9Components = [hz9]
     for thisComponent in trial_9Components:
@@ -1159,6 +1167,8 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
     thisExp.addData('trial_9.stopped', globalClock.getTime(format='float'))
+    # Run 'End Routine' code from code_4
+    thisExp.addData('eegtime', eeg.setMarker())
     # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
     if routineForceEnded:
         routineTimer.reset()
@@ -1171,7 +1181,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     # update component parameters for each repeat
     thisExp.addData('break_2.started', globalClock.getTime(format='float'))
     # keep track of which components have finished
-    break_2Components = [text_2]
+    break_2Components = [polygon_2]
     for thisComponent in break_2Components:
         thisComponent.tStart = None
         thisComponent.tStop = None
@@ -1194,39 +1204,39 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
         # update/draw components on each frame
         
-        # *text_2* updates
+        # *polygon_2* updates
         
-        # if text_2 is starting this frame...
-        if text_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # if polygon_2 is starting this frame...
+        if polygon_2.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
             # keep track of start time/frame for later
-            text_2.frameNStart = frameN  # exact frame index
-            text_2.tStart = t  # local t and not account for scr refresh
-            text_2.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(text_2, 'tStartRefresh')  # time at next scr refresh
+            polygon_2.frameNStart = frameN  # exact frame index
+            polygon_2.tStart = t  # local t and not account for scr refresh
+            polygon_2.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(polygon_2, 'tStartRefresh')  # time at next scr refresh
             # add timestamp to datafile
-            thisExp.timestampOnFlip(win, 'text_2.started')
+            thisExp.timestampOnFlip(win, 'polygon_2.started')
             # update status
-            text_2.status = STARTED
-            text_2.setAutoDraw(True)
+            polygon_2.status = STARTED
+            polygon_2.setAutoDraw(True)
         
-        # if text_2 is active this frame...
-        if text_2.status == STARTED:
+        # if polygon_2 is active this frame...
+        if polygon_2.status == STARTED:
             # update params
             pass
         
-        # if text_2 is stopping this frame...
-        if text_2.status == STARTED:
+        # if polygon_2 is stopping this frame...
+        if polygon_2.status == STARTED:
             # is it time to stop? (based on global clock, using actual start)
-            if tThisFlipGlobal > text_2.tStartRefresh + 10-frameTolerance:
+            if tThisFlipGlobal > polygon_2.tStartRefresh + 10-frameTolerance:
                 # keep track of stop time/frame for later
-                text_2.tStop = t  # not accounting for scr refresh
-                text_2.tStopRefresh = tThisFlipGlobal  # on global time
-                text_2.frameNStop = frameN  # exact frame index
+                polygon_2.tStop = t  # not accounting for scr refresh
+                polygon_2.tStopRefresh = tThisFlipGlobal  # on global time
+                polygon_2.frameNStop = frameN  # exact frame index
                 # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'text_2.stopped')
+                thisExp.timestampOnFlip(win, 'polygon_2.stopped')
                 # update status
-                text_2.status = FINISHED
-                text_2.setAutoDraw(False)
+                polygon_2.status = FINISHED
+                polygon_2.setAutoDraw(False)
         
         # check for quit (typically the Esc key)
         if defaultKeyboard.getKeys(keyList=["escape"]):
@@ -1265,6 +1275,8 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     continueRoutine = True
     # update component parameters for each repeat
     thisExp.addData('trial_24.started', globalClock.getTime(format='float'))
+    # Run 'Begin Routine' code from code_5
+    thisExp.addData('eegtime', eeg.setMarker())
     # keep track of which components have finished
     trial_24Components = [hz24]
     for thisComponent in trial_24Components:
@@ -1349,6 +1361,8 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
     thisExp.addData('trial_24.stopped', globalClock.getTime(format='float'))
+    # Run 'End Routine' code from code_5
+    thisExp.addData('eegtime', eeg.setMarker())
     # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
     if routineForceEnded:
         routineTimer.reset()
@@ -1361,7 +1375,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     # update component parameters for each repeat
     thisExp.addData('break_1.started', globalClock.getTime(format='float'))
     # keep track of which components have finished
-    break_1Components = [text]
+    break_1Components = [polygon]
     for thisComponent in break_1Components:
         thisComponent.tStart = None
         thisComponent.tStop = None
@@ -1384,39 +1398,39 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
         # update/draw components on each frame
         
-        # *text* updates
+        # *polygon* updates
         
-        # if text is starting this frame...
-        if text.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # if polygon is starting this frame...
+        if polygon.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
             # keep track of start time/frame for later
-            text.frameNStart = frameN  # exact frame index
-            text.tStart = t  # local t and not account for scr refresh
-            text.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(text, 'tStartRefresh')  # time at next scr refresh
+            polygon.frameNStart = frameN  # exact frame index
+            polygon.tStart = t  # local t and not account for scr refresh
+            polygon.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(polygon, 'tStartRefresh')  # time at next scr refresh
             # add timestamp to datafile
-            thisExp.timestampOnFlip(win, 'text.started')
+            thisExp.timestampOnFlip(win, 'polygon.started')
             # update status
-            text.status = STARTED
-            text.setAutoDraw(True)
+            polygon.status = STARTED
+            polygon.setAutoDraw(True)
         
-        # if text is active this frame...
-        if text.status == STARTED:
+        # if polygon is active this frame...
+        if polygon.status == STARTED:
             # update params
             pass
         
-        # if text is stopping this frame...
-        if text.status == STARTED:
+        # if polygon is stopping this frame...
+        if polygon.status == STARTED:
             # is it time to stop? (based on global clock, using actual start)
-            if tThisFlipGlobal > text.tStartRefresh + 2.5-frameTolerance:
+            if tThisFlipGlobal > polygon.tStartRefresh + 2.5-frameTolerance:
                 # keep track of stop time/frame for later
-                text.tStop = t  # not accounting for scr refresh
-                text.tStopRefresh = tThisFlipGlobal  # on global time
-                text.frameNStop = frameN  # exact frame index
+                polygon.tStop = t  # not accounting for scr refresh
+                polygon.tStopRefresh = tThisFlipGlobal  # on global time
+                polygon.frameNStop = frameN  # exact frame index
                 # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'text.stopped')
+                thisExp.timestampOnFlip(win, 'polygon.stopped')
                 # update status
-                text.status = FINISHED
-                text.setAutoDraw(False)
+                polygon.status = FINISHED
+                polygon.setAutoDraw(False)
         
         # check for quit (typically the Esc key)
         if defaultKeyboard.getKeys(keyList=["escape"]):
@@ -1564,6 +1578,8 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     if key_resp.keys != None:  # we had a response
         thisExp.addData('key_resp.rt', key_resp.rt)
         thisExp.addData('key_resp.duration', key_resp.duration)
+    # Run 'End Routine' code from code_6
+    eeg.close()
     thisExp.nextEntry()
     # the Routine "Adios" was not non-slip safe, so reset the non-slip timer
     routineTimer.reset()
