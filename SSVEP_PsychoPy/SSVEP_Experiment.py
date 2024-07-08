@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2024.1.5),
-    on July 02, 2024, at 01:09
+    on July 07, 2024, at 21:24
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -414,9 +414,9 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
         opacity=None, depth=0.0, interpolate=True)
     
-    # --- Initialize components for Routine "trial_9" ---
-    hz9 = visual.ShapeStim(
-        win=win, name='hz9',
+    # --- Initialize components for Routine "trial_12" ---
+    hz12 = visual.ShapeStim(
+        win=win, name='hz12',
         size=(0.5, 0.5), vertices='circle',
         ori=0.0, pos=(0, 0), anchor='center',
         lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
@@ -425,22 +425,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     # --- Initialize components for Routine "break_2" ---
     polygon_2 = visual.ShapeStim(
         win=win, name='polygon_2', vertices='cross',
-        size=(0.5, 0.5),
-        ori=0.0, pos=(0, 0), anchor='center',
-        lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
-        opacity=None, depth=0.0, interpolate=True)
-    
-    # --- Initialize components for Routine "trial_24" ---
-    hz24 = visual.ShapeStim(
-        win=win, name='hz24',
-        size=(0.5, 0.5), vertices='circle',
-        ori=0.0, pos=(0, 0), anchor='center',
-        lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
-        opacity=1.0, depth=0.0, interpolate=True)
-    
-    # --- Initialize components for Routine "break_1" ---
-    polygon = visual.ShapeStim(
-        win=win, name='polygon', vertices='cross',
         size=(0.5, 0.5),
         ori=0.0, pos=(0, 0), anchor='center',
         lineWidth=1.0,     colorSpace='rgb',  lineColor='white', fillColor='white',
@@ -1073,15 +1057,15 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         routineTimer.addTime(-10.000000)
     thisExp.nextEntry()
     
-    # --- Prepare to start Routine "trial_9" ---
+    # --- Prepare to start Routine "trial_12" ---
     continueRoutine = True
     # update component parameters for each repeat
-    thisExp.addData('trial_9.started', globalClock.getTime(format='float'))
+    thisExp.addData('trial_12.started', globalClock.getTime(format='float'))
     # Run 'Begin Routine' code from code_4
     thisExp.addData('eegtime', eeg.setMarker())
     # keep track of which components have finished
-    trial_9Components = [hz9]
-    for thisComponent in trial_9Components:
+    trial_12Components = [hz12]
+    for thisComponent in trial_12Components:
         thisComponent.tStart = None
         thisComponent.tStop = None
         thisComponent.tStartRefresh = None
@@ -1093,7 +1077,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     _timeToFirstFrame = win.getFutureFlipTime(clock="now")
     frameN = -1
     
-    # --- Run Routine "trial_9" ---
+    # --- Run Routine "trial_12" ---
     routineForceEnded = not continueRoutine
     while continueRoutine and routineTimer.getTime() < 20.0:
         # get current time
@@ -1103,39 +1087,39 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
         # update/draw components on each frame
         
-        # *hz9* updates
+        # *hz12* updates
         
-        # if hz9 is starting this frame...
-        if hz9.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
+        # if hz12 is starting this frame...
+        if hz12.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
             # keep track of start time/frame for later
-            hz9.frameNStart = frameN  # exact frame index
-            hz9.tStart = t  # local t and not account for scr refresh
-            hz9.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(hz9, 'tStartRefresh')  # time at next scr refresh
+            hz12.frameNStart = frameN  # exact frame index
+            hz12.tStart = t  # local t and not account for scr refresh
+            hz12.tStartRefresh = tThisFlipGlobal  # on global time
+            win.timeOnFlip(hz12, 'tStartRefresh')  # time at next scr refresh
             # add timestamp to datafile
-            thisExp.timestampOnFlip(win, 'hz9.started')
+            thisExp.timestampOnFlip(win, 'hz12.started')
             # update status
-            hz9.status = STARTED
-            hz9.setAutoDraw(True)
+            hz12.status = STARTED
+            hz12.setAutoDraw(True)
         
-        # if hz9 is active this frame...
-        if hz9.status == STARTED:
+        # if hz12 is active this frame...
+        if hz12.status == STARTED:
             # update params
-            hz9.setOpacity((frameN%16) <=4, log=False)
+            hz12.setOpacity((frameN%12) <=5, log=False)
         
-        # if hz9 is stopping this frame...
-        if hz9.status == STARTED:
+        # if hz12 is stopping this frame...
+        if hz12.status == STARTED:
             # is it time to stop? (based on global clock, using actual start)
-            if tThisFlipGlobal > hz9.tStartRefresh + 20-frameTolerance:
+            if tThisFlipGlobal > hz12.tStartRefresh + 20-frameTolerance:
                 # keep track of stop time/frame for later
-                hz9.tStop = t  # not accounting for scr refresh
-                hz9.tStopRefresh = tThisFlipGlobal  # on global time
-                hz9.frameNStop = frameN  # exact frame index
+                hz12.tStop = t  # not accounting for scr refresh
+                hz12.tStopRefresh = tThisFlipGlobal  # on global time
+                hz12.frameNStop = frameN  # exact frame index
                 # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'hz9.stopped')
+                thisExp.timestampOnFlip(win, 'hz12.stopped')
                 # update status
-                hz9.status = FINISHED
-                hz9.setAutoDraw(False)
+                hz12.status = FINISHED
+                hz12.setAutoDraw(False)
         
         # check for quit (typically the Esc key)
         if defaultKeyboard.getKeys(keyList=["escape"]):
@@ -1149,7 +1133,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             routineForceEnded = True
             break
         continueRoutine = False  # will revert to True if at least one component still running
-        for thisComponent in trial_9Components:
+        for thisComponent in trial_12Components:
             if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
                 continueRoutine = True
                 break  # at least one component has not yet finished
@@ -1158,11 +1142,11 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
             win.flip()
     
-    # --- Ending Routine "trial_9" ---
-    for thisComponent in trial_9Components:
+    # --- Ending Routine "trial_12" ---
+    for thisComponent in trial_12Components:
         if hasattr(thisComponent, "setAutoDraw"):
             thisComponent.setAutoDraw(False)
-    thisExp.addData('trial_9.stopped', globalClock.getTime(format='float'))
+    thisExp.addData('trial_12.stopped', globalClock.getTime(format='float'))
     # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
     if routineForceEnded:
         routineTimer.reset()
@@ -1263,198 +1247,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         routineTimer.reset()
     else:
         routineTimer.addTime(-10.000000)
-    thisExp.nextEntry()
-    
-    # --- Prepare to start Routine "trial_24" ---
-    continueRoutine = True
-    # update component parameters for each repeat
-    thisExp.addData('trial_24.started', globalClock.getTime(format='float'))
-    # Run 'Begin Routine' code from code_5
-    thisExp.addData('eegtime', eeg.setMarker())
-    # keep track of which components have finished
-    trial_24Components = [hz24]
-    for thisComponent in trial_24Components:
-        thisComponent.tStart = None
-        thisComponent.tStop = None
-        thisComponent.tStartRefresh = None
-        thisComponent.tStopRefresh = None
-        if hasattr(thisComponent, 'status'):
-            thisComponent.status = NOT_STARTED
-    # reset timers
-    t = 0
-    _timeToFirstFrame = win.getFutureFlipTime(clock="now")
-    frameN = -1
-    
-    # --- Run Routine "trial_24" ---
-    routineForceEnded = not continueRoutine
-    while continueRoutine and routineTimer.getTime() < 20.0:
-        # get current time
-        t = routineTimer.getTime()
-        tThisFlip = win.getFutureFlipTime(clock=routineTimer)
-        tThisFlipGlobal = win.getFutureFlipTime(clock=None)
-        frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
-        # update/draw components on each frame
-        
-        # *hz24* updates
-        
-        # if hz24 is starting this frame...
-        if hz24.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-            # keep track of start time/frame for later
-            hz24.frameNStart = frameN  # exact frame index
-            hz24.tStart = t  # local t and not account for scr refresh
-            hz24.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(hz24, 'tStartRefresh')  # time at next scr refresh
-            # add timestamp to datafile
-            thisExp.timestampOnFlip(win, 'hz24.started')
-            # update status
-            hz24.status = STARTED
-            hz24.setAutoDraw(True)
-        
-        # if hz24 is active this frame...
-        if hz24.status == STARTED:
-            # update params
-            hz24.setOpacity((frameN%6) <=1, log=False)
-        
-        # if hz24 is stopping this frame...
-        if hz24.status == STARTED:
-            # is it time to stop? (based on global clock, using actual start)
-            if tThisFlipGlobal > hz24.tStartRefresh + 20-frameTolerance:
-                # keep track of stop time/frame for later
-                hz24.tStop = t  # not accounting for scr refresh
-                hz24.tStopRefresh = tThisFlipGlobal  # on global time
-                hz24.frameNStop = frameN  # exact frame index
-                # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'hz24.stopped')
-                # update status
-                hz24.status = FINISHED
-                hz24.setAutoDraw(False)
-        
-        # check for quit (typically the Esc key)
-        if defaultKeyboard.getKeys(keyList=["escape"]):
-            thisExp.status = FINISHED
-        if thisExp.status == FINISHED or endExpNow:
-            endExperiment(thisExp, win=win)
-            return
-        
-        # check if all components have finished
-        if not continueRoutine:  # a component has requested a forced-end of Routine
-            routineForceEnded = True
-            break
-        continueRoutine = False  # will revert to True if at least one component still running
-        for thisComponent in trial_24Components:
-            if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
-                continueRoutine = True
-                break  # at least one component has not yet finished
-        
-        # refresh the screen
-        if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
-            win.flip()
-    
-    # --- Ending Routine "trial_24" ---
-    for thisComponent in trial_24Components:
-        if hasattr(thisComponent, "setAutoDraw"):
-            thisComponent.setAutoDraw(False)
-    thisExp.addData('trial_24.stopped', globalClock.getTime(format='float'))
-    # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
-    if routineForceEnded:
-        routineTimer.reset()
-    else:
-        routineTimer.addTime(-20.000000)
-    thisExp.nextEntry()
-    
-    # --- Prepare to start Routine "break_1" ---
-    continueRoutine = True
-    # update component parameters for each repeat
-    thisExp.addData('break_1.started', globalClock.getTime(format='float'))
-    # keep track of which components have finished
-    break_1Components = [polygon]
-    for thisComponent in break_1Components:
-        thisComponent.tStart = None
-        thisComponent.tStop = None
-        thisComponent.tStartRefresh = None
-        thisComponent.tStopRefresh = None
-        if hasattr(thisComponent, 'status'):
-            thisComponent.status = NOT_STARTED
-    # reset timers
-    t = 0
-    _timeToFirstFrame = win.getFutureFlipTime(clock="now")
-    frameN = -1
-    
-    # --- Run Routine "break_1" ---
-    routineForceEnded = not continueRoutine
-    while continueRoutine and routineTimer.getTime() < 2.5:
-        # get current time
-        t = routineTimer.getTime()
-        tThisFlip = win.getFutureFlipTime(clock=routineTimer)
-        tThisFlipGlobal = win.getFutureFlipTime(clock=None)
-        frameN = frameN + 1  # number of completed frames (so 0 is the first frame)
-        # update/draw components on each frame
-        
-        # *polygon* updates
-        
-        # if polygon is starting this frame...
-        if polygon.status == NOT_STARTED and tThisFlip >= 0.0-frameTolerance:
-            # keep track of start time/frame for later
-            polygon.frameNStart = frameN  # exact frame index
-            polygon.tStart = t  # local t and not account for scr refresh
-            polygon.tStartRefresh = tThisFlipGlobal  # on global time
-            win.timeOnFlip(polygon, 'tStartRefresh')  # time at next scr refresh
-            # add timestamp to datafile
-            thisExp.timestampOnFlip(win, 'polygon.started')
-            # update status
-            polygon.status = STARTED
-            polygon.setAutoDraw(True)
-        
-        # if polygon is active this frame...
-        if polygon.status == STARTED:
-            # update params
-            pass
-        
-        # if polygon is stopping this frame...
-        if polygon.status == STARTED:
-            # is it time to stop? (based on global clock, using actual start)
-            if tThisFlipGlobal > polygon.tStartRefresh + 2.5-frameTolerance:
-                # keep track of stop time/frame for later
-                polygon.tStop = t  # not accounting for scr refresh
-                polygon.tStopRefresh = tThisFlipGlobal  # on global time
-                polygon.frameNStop = frameN  # exact frame index
-                # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'polygon.stopped')
-                # update status
-                polygon.status = FINISHED
-                polygon.setAutoDraw(False)
-        
-        # check for quit (typically the Esc key)
-        if defaultKeyboard.getKeys(keyList=["escape"]):
-            thisExp.status = FINISHED
-        if thisExp.status == FINISHED or endExpNow:
-            endExperiment(thisExp, win=win)
-            return
-        
-        # check if all components have finished
-        if not continueRoutine:  # a component has requested a forced-end of Routine
-            routineForceEnded = True
-            break
-        continueRoutine = False  # will revert to True if at least one component still running
-        for thisComponent in break_1Components:
-            if hasattr(thisComponent, "status") and thisComponent.status != FINISHED:
-                continueRoutine = True
-                break  # at least one component has not yet finished
-        
-        # refresh the screen
-        if continueRoutine:  # don't flip if this routine is over or we'll get a blank screen
-            win.flip()
-    
-    # --- Ending Routine "break_1" ---
-    for thisComponent in break_1Components:
-        if hasattr(thisComponent, "setAutoDraw"):
-            thisComponent.setAutoDraw(False)
-    thisExp.addData('break_1.stopped', globalClock.getTime(format='float'))
-    # using non-slip timing so subtract the expected duration of this Routine (unless ended on request)
-    if routineForceEnded:
-        routineTimer.reset()
-    else:
-        routineTimer.addTime(-2.500000)
     thisExp.nextEntry()
     
     # --- Prepare to start Routine "Adios" ---
